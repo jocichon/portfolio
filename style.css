@@ -1,0 +1,136 @@
+/* PALETTE: Forest Spiral */
+:root {
+    --color-bg: #E7F0D0;
+    --color-bg-soft: #C9E08B;
+    --color-text: #1F4633;
+
+    --color-heading: #006B4F;
+    --color-subheading: #5A8F3D;
+
+    --color-accent: #3E9A4D;
+    --color-accent-hover: #006B4F;
+
+    --color-border: #A8C67A;
+    --color-card: #F4F8E8;
+    --color-shadow: rgba(0, 70, 50, 0.15);
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* =========================
+   Hero Section
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem;
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+            135deg,
+            var(--color-bg) 0%,
+            var(--color-bg-soft) 100%
+    );
+}
+
+/* Artwork Layer */
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url("images/forest-spiral.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+}
+
+/* Color Wash Layer */
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(231, 240, 208, 0.82);
+
+    z-index: 1;
+}
+
+/* Content Layer */
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    color: var(--color-heading);
+}
+
+.hero h2 {
+    margin-bottom: 1rem;
+
+    color: var(--color-subheading);
+}
+
+.hero p {
+    margin-bottom: 2rem;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 1rem 2rem;
+
+    background: var(--color-accent);
+    color: white;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background: var(--color-accent-hover);
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.project-visual img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--color-shadow);
+}
