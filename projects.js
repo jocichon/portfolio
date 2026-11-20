@@ -3,8 +3,11 @@
  * Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
  * Author:      Jo Cichon
  * Description: Single source of truth for portfolio projects. script.js
- *              renders project cards and category filter buttons from
- *              this array; index.html holds no project content.
+ *              renders preview cards and category filter buttons from
+ *              this array; index.html holds no project content. Cards
+ *              show thumbnail, title, date, summary, categories, and a
+ *              technologies & methods summary; the remaining fields are
+ *              for each project's detail page.
  *
  * PROJECT SCHEMA (only id, title, summary, categories are required;
  * omit or leave empty any optional field and it is not rendered)
@@ -12,6 +15,12 @@
  *   id            string    Unique, URL-safe slug ("aurafx").
  *   title         string    Card heading.
  *   summary       string    What the project is (one short paragraph).
+ *                           Cards clamp it to three lines.
+ *   page          string    Detail page URL. Defaults to
+ *                           "projects/<id>.html" when omitted.
+ *   thumbnail     object    Card image { src, alt }. Defaults to the
+ *                           first assets.images entry; with neither, the
+ *                           card shows the forest-spiral artwork.
  *   categories    string[]  Filter categories. Filter buttons are built
  *                           from these, so spelling must be consistent.
  *   start         string    "YYYY-MM". Start date.
@@ -97,6 +106,7 @@ const PROJECTS = [
             "A real-time migraine aura simulator that applies adjustable " +
             "visual effects to a live webcam feed.",
         categories: ["Applications", "Computer Vision"],
+        page: "projects/aura_fx/index.html",
         start: "",
         end: "",
         role: "",
@@ -106,7 +116,6 @@ const PROJECTS = [
         deliverables: [],
         assets: {
             images: [{ src: "images/aurafx-placeholder.png", alt: "AuraFx screenshot" }],
-            links: [{ label: "Project page", href: "projects/aura_fx/index.html" }],
         },
         notes: "",
     },

@@ -2,8 +2,9 @@
  * File:        script.js
  * Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
  * Author:      Jo Cichon
- * Description: Renders project cards and filter buttons from PROJECTS
- *              (projects.js) into index.html. "Chronological" shows every
+ * Description: Renders project preview cards and filter buttons from
+ *              PROJECTS (projects.js) into index.html. Each card links to
+ *              the project's detail page. "Chronological" shows every
  *              project newest first; each category button shows only
  *              projects whose categories include it.
  */
@@ -26,17 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     /** True for a non-empty string or non-empty array. */
     function has(value) {
         return Array.isArray(value) ? value.length > 0 : Boolean(value);
-    }
-
-    /** Builds an <a> that opens external URLs in a new tab. */
-    function link(label, href) {
-        const a = el("a", null, label);
-        a.href = href;
-        if (/^https?:\/\//.test(href)) {
-            a.target = "_blank";
-            a.rel = "noopener noreferrer";
-        }
-        return a;
     }
 
     /** "2026-04" -> "Apr 2026"; "present" -> "Present". */
@@ -73,76 +63,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ---------- Card rendering ---------- */
 
-    function renderList(heading, items, renderItem) {
-        const fragment = document.createDocumentFragment();
-        fragment.append(el("h3", null, heading));
-        const ul = el("ul");
-        items.forEach((item) => {
-            const li = el("li");
-            li.append(renderItem(item));
-            ul.append(li);
-        });
-        fragment.append(ul);
-        return fragment;
+    const TECH_PREVIEW_COUNT = 4; // items shown before "+N more"
+
+    /** Detail page URL: project.page, else projects/<id>.html. */
+    function detailPage(project) {
+        return project.page || `projects/${project.id}.html`;
     }
 
+    /** Card image: project.thumbnail, else the first asset image. */
+    function thumbnailOf(project) {
+        const images = (project.assets && project.assets.images) || [];
+        return project.thumbnail || images[0] || null;
+    }
+
+    /** Decorative placeholder tile (forest-spiral artwork, see CSS). */
+    function placeholder() {
+        const tile = el("div", "project-thumb-placeholder");
+        tile.setAttribute("aria-hidden", "true");
+        return tile;
+    }
+
+    function renderThumbnail(project) {
+        const frame = el("div", "project-thumb");
+        const image = thumbnailOf(project);
+        if (!image) {
+            frame.append(placeholder());
+            return frame;
+        }
+        const img = el("img");
+        img.src = image.src;
+        img.alt = ""; // decorative: the card title names the project
+        img.loading = "lazy";
+        img.addEventListener("error", () => img.replaceWith(placeholder()));
+        frame.append(img);
+        return frame;
+    }
+
+    /** "C++ · OpenCV · CMake +2 more" from technologies, then methods. */
+    function techSummary(project) {
+        const items = [...(project.technologies || []), ...(project.methods || [])];
+        if (!has(items)) return "";
+        const shown = items.slice(0, TECH_PREVIEW_COUNT).join(" · ");
+        const extra = items.length - TECH_PREVIEW_COUNT;
+        return extra > 0 ? `${shown} +${extra} more` : shown;
+    }
+
+    /**
+     * Preview card. The title link is stretched over the whole card
+     * (see .project-link::after in style.css), so the card is one
+     * click target and one Tab stop, announced by its title.
+     */
     function renderCard(project) {
-        const card = el("section", "project");
+        const card = el("article", "project");
         card.id = project.id;
-        const info = el("div", "project-info");
+        card.append(renderThumbnail(project));
 
-        info.append(el("h2", null, project.title));
+        const body = el("div", "project-body");
 
-        const meta = [project.role, dateRange(project)].filter(Boolean).join(" · ");
-        if (meta) info.append(el("p", "project-meta", meta));
+        const title = el("h2", "project-title");
+        const anchor = el("a", "project-link", project.title);
+        anchor.href = detailPage(project);
+        title.append(anchor);
+        body.append(title);
 
-        info.append(el("p", null, project.summary));
+        const dates = dateRange(project);
+        if (dates) body.append(el("p", "project-date", dates));
 
-        if (has(project.contribution)) {
-            info.append(el("h3", null, "My Contribution"));
-            info.append(el("p", null, project.contribution));
+        body.append(el("p", "project-summary", project.summary));
+
+        const categories = el("ul", "project-categories");
+        categories.setAttribute("aria-label", "Categories");
+        project.categories.forEach((category) => categories.append(el("li", null, category)));
+        body.append(categories);
+
+        const tech = techSummary(project);
+        if (tech) {
+            const line = el("p", "project-tech");
+            line.append(el("span", "visually-hidden", "Technologies and methods: "));
+            line.append(document.createTextNode(tech));
+            body.append(line);
         }
 
-        // Technologies and methods: one display list, two data fields.
-        const techAndMethods = [
-            ...(project.technologies || []),
-            ...(project.methods || []),
-        ];
-        if (has(techAndMethods)) {
-            info.append(renderList("Technologies & Methods", techAndMethods, (t) =>
-                document.createTextNode(t)));
-        }
-
-        if (has(project.deliverables)) {
-            info.append(renderList("Deliverables", project.deliverables, (d) =>
-                d.href ? link(d.label, d.href) : document.createTextNode(d.label)));
-        }
-
-        const assets = project.assets || {};
-        const resources = [...(assets.files || []), ...(assets.links || [])];
-        if (has(resources)) {
-            info.append(renderList("Resources", resources, (r) => link(r.label, r.href)));
-        }
-
-        if (has(project.notes)) info.append(el("p", "project-notes", project.notes));
-
-        card.append(info);
-
-        if (has(assets.images)) {
-            const visual = el("div", "project-visual");
-            assets.images.forEach((image) => {
-                const figure = el("figure");
-                const img = el("img");
-                img.src = image.src;
-                img.alt = image.alt;
-                img.loading = "lazy";
-                figure.append(img);
-                if (image.caption) figure.append(el("figcaption", null, image.caption));
-                visual.append(figure);
-            });
-            card.append(visual);
-        }
-
+        card.append(body);
         return card;
     }
 
