@@ -4,9 +4,10 @@
   Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
   Author:      Jo Cichon
   Description: Single-page portfolio. Hero section with a short bio,
-               followed by project cards (description, tech, skills,
-               and optional screenshot/link).
+               followed by filterable project cards rendered from
+               projects.js by script.js.
   Styles:      style.css
+  Scripts:     projects.js (data), script.js (rendering, filters)
 -->
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jo Cichon Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="projects.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -39,162 +41,19 @@
 <main id="projects">
 
     <!--
-      PROJECT FILTERS
-      Each button's data-filter must match a category name used in a
-      project's data-categories (exact spelling, case-insensitive).
-      "chronological" shows every project, newest first, using data-date.
+      PROJECTS
+      All project content lives in projects.js. script.js builds the
+      filter buttons and project cards from it at page load.
     -->
-    <nav class="project-filters" aria-label="Filter projects">
-        <button type="button" data-filter="chronological" aria-pressed="true">Chronological</button>
-        <button type="button" data-filter="Computer Vision" aria-pressed="false">Computer Vision</button>
-        <button type="button" data-filter="Tutorials" aria-pressed="false">Tutorials</button>
-        <button type="button" data-filter="Research" aria-pressed="false">Research</button>
-        <button type="button" data-filter="Machine Learning" aria-pressed="false">Machine Learning</button>
-        <button type="button" data-filter="NLP" aria-pressed="false">NLP</button>
-        <button type="button" data-filter="Applications" aria-pressed="false">Applications</button>
-    </nav>
+    <nav class="project-filters" aria-label="Filter projects"></nav>
 
     <p class="no-projects" hidden>No projects in this category yet.</p>
 
-    <!--
-      PROJECT FIELDS
-      data-categories: comma-separated list of categories this project belongs to.
-      data-date:       YYYY-MM, used by the Chronological sort. Projects with
-                       no date are listed last, in page order.
-    -->
+    <div id="project-list"></div>
 
-    <!-- PROJECT -->
-    <section class="project"
-             data-categories="Applications, Computer Vision"
-             data-date="">
-        <div class="project-info">
-            <h2>AuraFx</h2>
-
-            <p>
-                A real-time migraine aura simulator that applies
-                adjustable visual effects to a live webcam feed.
-            </p>
-
-            <h3>Tech</h3>
-            <ul>
-                <li>C++</li>
-                <li>OpenCV</li>
-                <li>CMake</li>
-            </ul>
-
-            <h3>Skills</h3>
-            <ul>
-                <li>Computer Vision</li>
-                <li>UX Design</li>
-                <li>Accessibility</li>
-            </ul>
-        </div>
-
-        <div class="project-visual">
-            <a href="projects\aura_fx\index.html">
-                <img src="images/aurafx-placeholder.png"
-                     alt="AuraFx screenshot">
-            </a>
-
-        </div>
-    </section>
-
-    <!-- PROJECT -->
-    <section class="project"
-             data-categories="Applications"
-             data-date="">
-        <div class="project-info">
-            <h2>Gamily</h2>
-
-            <p>
-                Tournament management platform built with Spring Boot
-                and MySQL.
-            </p>
-
-            <h3>Tech</h3>
-            <ul>
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>MySQL</li>
-            </ul>
-        </div>
-
-        <div class="project-visual">
-            <img src="images/gamily-placeholder.png"
-                 alt="Gamily screenshot">
-        </div>
-    </section>
-
-    <!-- PROJECT -->
-    <section class="project"
-             data-categories="Research"
-             data-date="2026-04">
-        <div class="project-info">
-            <h2>Mirror or Self-Portrait: A Systematic Review of AI Ethics Literature</h2>
-
-            <p>
-                An ongoing systematic review, with Dr. Brianna Dym, of how AI
-                ethics literature constructs ethical meaning. From 219 screened
-                ACM papers, 62 were coded by how their language expresses
-                ethics, producing an emergent two-axis framework: AI as mirror
-                vs. self-portrait, and ethics as checklist vs. situated.
-                Grounded in existentialism, the framework treats AI systems as
-                expressions of their creators' decisions. Next phases: a
-                labeled dataset and an ML classifier to automate classification
-                across the AI lifecycle.
-            </p>
-
-            <p>
-                Presented at the Khoury Spring MS CS Showcase, April 2026.
-            </p>
-
-            <h3>Skills</h3>
-            <ul>
-                <li>Systematic Reviews</li>
-                <li>AI Ethics</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- PROJECT -->
-    <section class="project"
-             data-categories="Applications, NLP, Machine Learning"
-             data-date="2026-04">
-        <div class="project-info">
-            <h2>AI4HC: AI-Powered Virtual Assistant for Healthcare Providers</h2>
-
-            <p>
-                An AI assistant that converts nurses' spoken observations into
-                structured, reviewable patient data. The system transcribes
-                audio, extracts clinical events with an LLM, and generates shift
-                handover summaries, with the nurse confirming results at each
-                step. Built by an 11-person graduate team; I led sprint
-                planning, architecture decision records, GitHub workflows,
-                cross-component integration, and the showcase poster.
-            </p>
-
-            <p>
-                Faculty advisor: Ian Gorton. Presented at the Khoury Spring
-                MS CS Showcase, April 2026.
-            </p>
-
-            <h3>Tech</h3>
-            <ul>
-                <li>React Native</li>
-                <li>Spring Boot</li>
-                <li>RabbitMQ</li>
-                <li>AWS Transcribe</li>
-                <li>Claude Haiku 4.5 on AWS Bedrock</li>
-                <li>PostgreSQL</li>
-            </ul>
-
-            <h3>Skills</h3>
-            <ul>
-                <li>Project Management</li>
-                <li>Agile Methodologies</li>
-            </ul>
-        </div>
-    </section>
+    <noscript>
+        <p class="no-projects">Enable JavaScript to view projects.</p>
+    </noscript>
 
 </main>
 
