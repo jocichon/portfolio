@@ -4,7 +4,8 @@
  * Author:      Jo Cichon
  * Description: Styles for index.html. Defines the Forest Spiral color
  *              palette as CSS custom properties, the layered hero section
- *              (artwork, color wash, content), and project card layout.
+ *              (artwork, color wash, content), project filter buttons,
+ *              and project card layout.
  */
 
 /* PALETTE: Forest Spiral */
@@ -126,6 +127,60 @@ body {
     background: var(--color-accent-hover);
 }
 
+/* =========================
+   Project Filters
+========================= */
+
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+
+    padding: 3rem 2rem 1rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.project-filters button {
+    padding: 0.5rem 1.25rem;
+
+    font: inherit;
+    color: var(--color-heading);
+    background: var(--color-card);
+
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-filters button:hover {
+    background: var(--color-bg-soft);
+}
+
+.project-filters button[aria-pressed="true"],
+.project-filters button[aria-pressed="true"]:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+}
+
+.project-filters button:focus-visible {
+    outline: 3px solid var(--color-accent-hover);
+    outline-offset: 2px;
+}
+
+.no-projects {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* =========================
+   Projects
+========================= */
+
 .project {
     display: flex;
     flex-direction: column;
@@ -136,6 +191,11 @@ body {
     margin: auto;
 
     border-bottom: 1px solid var(--color-border);
+}
+
+/* display: flex above would override the hidden attribute */
+.project[hidden] {
+    display: none;
 }
 
 .project-visual img {
