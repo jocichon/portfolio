@@ -39,7 +39,7 @@ body {
 ========================= */
 
 .hero {
-    min-height: 100vh;
+    min-height: 25vh;
 
     display: flex;
     align-items: center;
@@ -106,27 +106,6 @@ body {
     color: var(--color-subheading);
 }
 
-.hero p {
-    margin-bottom: 2rem;
-}
-
-.button {
-    display: inline-block;
-
-    padding: 1rem 2rem;
-
-    background: var(--color-accent);
-    color: white;
-
-    text-decoration: none;
-    border-radius: 8px;
-
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background: var(--color-accent-hover);
-}
 
 /* =========================
    Project Filters
@@ -144,7 +123,6 @@ body {
 }
 
 .project-filters button {
-    /* Matches the hero "View Projects" button (.button) */
     padding: 1rem 2rem;
 
     font: inherit;
