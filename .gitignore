@@ -1,3 +1,8 @@
+# File:        .gitignore
+# Project:     Jo Cichon Portfolio
+# Author:      Jo Cichon
+# Description: Files and folders Git should not track.
+
 # Compiled class file
 *.class
 
