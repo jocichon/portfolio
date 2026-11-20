@@ -4,9 +4,10 @@
  * Author:      Jo Cichon
  * Description: Styles for index.html. Defines the Forest Spiral color
  *              palette as CSS custom properties, the layered hero section
- *              (artwork, color wash, content), project filter buttons,
- *              project card layout, and data-driven card details
- *              (meta line, notes, links, image captions).
+ *              (artwork, color wash, content), project filter tabs
+ *              along the hero's bottom edge, project card layout, and
+ *              data-driven card details (meta line, notes, links, image
+ *              captions).
  */
 
 /* PALETTE: Forest Spiral */
@@ -41,11 +42,13 @@ body {
 .hero {
     min-height: 25vh;
 
+    /* Column: centered title block, filter tabs pinned to the bottom edge */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 2rem;
+    padding: 2rem 0 0;
     text-align: center;
 
     position: relative;
@@ -112,25 +115,35 @@ body {
 ========================= */
 
 .project-filters {
+    /* Sits in the hero's content layer, flush with its bottom edge */
+    position: relative;
+    z-index: 2;
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 
-    padding: 3rem 2rem 1rem;
-    max-width: 1200px;
-    margin: auto;
+    width: 100%;
+    margin-top: auto;
+    padding: 1.5rem 0.5rem 0;
+    box-sizing: border-box;
 }
 
 .project-filters button {
-    padding: 1rem 2rem;
+    /* Grow equally to fill the row; wrap onto new rows on narrow screens */
+    flex: 1 1 0;
+    min-width: max-content;
+
+    padding: 0.6rem 1rem;
 
     font: inherit;
+    font-size: 0.95rem;
+    white-space: nowrap;
     color: white;
     background: var(--color-accent);
 
     border: none;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0; /* tab shape, open at the bottom edge */
     cursor: pointer;
 
     transition: background-color 0.3s ease;
