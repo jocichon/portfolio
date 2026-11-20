@@ -1,3 +1,12 @@
+/*
+ * File:        style.css
+ * Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
+ * Author:      Jo Cichon
+ * Description: Styles for index.html. Defines the Forest Spiral color
+ *              palette as CSS custom properties, the layered hero section
+ *              (artwork, color wash, content), and project card layout.
+ */
+
 /* PALETTE: Forest Spiral */
 :root {
     --color-bg: #E7F0D0;
