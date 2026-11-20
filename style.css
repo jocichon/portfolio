@@ -143,28 +143,28 @@ body {
 }
 
 .project-filters button {
-    padding: 0.5rem 1.25rem;
+    /* Matches the hero "View Projects" button (.button) */
+    padding: 1rem 2rem;
 
     font: inherit;
-    color: var(--color-heading);
-    background: var(--color-card);
+    color: white;
+    background: var(--color-accent);
 
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
 
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .project-filters button:hover {
-    background: var(--color-bg-soft);
+    background: var(--color-accent-hover);
 }
 
-.project-filters button[aria-pressed="true"],
-.project-filters button[aria-pressed="true"]:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: white;
+/* Selected filter: darker fill plus an inset ring so it stands out */
+.project-filters button[aria-pressed="true"] {
+    background: var(--color-accent-hover);
+    box-shadow: inset 0 0 0 3px var(--color-bg-soft);
 }
 
 .project-filters button:focus-visible {
