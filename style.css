@@ -5,9 +5,8 @@
  * Description: Styles for index.html. Defines the Forest Spiral color
  *              palette as CSS custom properties, the layered hero section
  *              (artwork, color wash, content), project filter tabs
- *              along the hero's bottom edge, project card layout, and
- *              data-driven card details (meta line, notes, links, image
- *              captions).
+ *              along the hero's bottom edge, and the responsive grid of
+ *              clickable project preview cards.
  */
 
 /* PALETTE: Forest Spiral */
@@ -170,19 +169,34 @@ body {
 }
 
 /* =========================
-   Projects
+   Project Cards
 ========================= */
 
-.project {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+/* Responsive grid: as many 300px+ columns as fit, one column on phones */
+#project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 1.5rem;
 
-    padding: 4rem 2rem;
     max-width: 1200px;
     margin: auto;
+    padding: 2rem 1rem 4rem;
+    box-sizing: border-box;
+}
 
-    border-bottom: 1px solid var(--color-border);
+.project {
+    position: relative; /* anchor for the stretched link */
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--color-shadow);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* display: flex above would override the hidden attribute */
@@ -190,31 +204,123 @@ body {
     display: none;
 }
 
-.project-visual img {
+.project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px var(--color-shadow);
+}
+
+/* Keyboard focus lands on the title link; ring the whole card */
+.project:focus-within {
+    outline: 3px solid var(--color-accent-hover);
+    outline-offset: 3px;
+}
+
+.project-link:focus {
+    outline: none;
+}
+
+/* Thumbnail: fixed 16:9 frame so cards line up */
+.project-thumb {
+    aspect-ratio: 16 / 9;
+    background: var(--color-bg-soft);
+}
+
+.project-thumb img {
+    display: block;
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px var(--color-shadow);
+    height: 100%;
+    object-fit: cover;
 }
 
-.project-meta {
-    color: var(--color-subheading);
-    font-weight: bold;
+/* No thumbnail: hero artwork under the same color wash as the hero */
+.project-thumb-placeholder {
+    height: 100%;
+    background:
+        linear-gradient(rgba(231, 240, 208, 0.6), rgba(231, 240, 208, 0.6)),
+        url("images/forest-spiral.jpg") center / cover;
 }
 
-.project-notes {
-    font-style: italic;
+.project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+
+    padding: 1.25rem;
 }
 
-.project-info a {
-    color: var(--color-accent-hover);
+.project-body > * {
+    margin: 0;
 }
 
-.project-visual figure {
-    margin: 0 0 1.5rem;
+.project-title {
+    font-size: 1.2rem;
+    line-height: 1.3;
 }
 
-.project-visual figcaption {
-    margin-top: 0.5rem;
+.project-link {
+    color: var(--color-heading);
+    text-decoration: none;
+}
+
+/* Stretch the title link over the entire card */
+.project-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.project:hover .project-link {
+    text-decoration: underline;
+}
+
+.project-date {
     font-size: 0.9rem;
-    text-align: center;
+    font-weight: bold;
+    color: var(--color-subheading);
+}
+
+/* Keep previews short: three lines, then an ellipsis */
+.project-summary {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.project-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    padding: 0;
+    list-style: none;
+}
+
+.project-categories li {
+    padding: 0.15rem 0.6rem;
+
+    font-size: 0.8rem;
+    color: var(--color-heading);
+    background: var(--color-bg-soft);
+    border-radius: 999px;
+}
+
+/* Pinned to the bottom so it lines up across cards in a row */
+.project-tech {
+    margin-top: auto;
+    padding-top: 0.6rem;
+
+    font-size: 0.85rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
