@@ -4,10 +4,11 @@
  * Author:      Jo Cichon
  * Description: Single source of truth for portfolio projects. script.js
  *              renders preview cards and category filter buttons from
- *              this array; index.html holds no project content. Cards
- *              show thumbnail, title, date, summary, categories, and a
- *              technologies & methods summary; the remaining fields are
- *              for each project's detail page.
+ *              this array, and project-page.js renders each project's
+ *              detail page (project.html?id=<id>) from it; no HTML file
+ *              holds project content. Cards show thumbnail, title, date,
+ *              summary, categories, and a technologies & methods
+ *              summary; the detail page shows every field.
  *
  * PROJECT SCHEMA (only id, title, summary, categories are required;
  * omit or leave empty any optional field and it is not rendered)
@@ -16,8 +17,11 @@
  *   title         string    Card heading.
  *   summary       string    What the project is (one short paragraph).
  *                           Cards clamp it to three lines.
- *   page          string    Detail page URL. Defaults to
- *                           "projects/<id>.html" when omitted.
+ *   overview      string | string[]
+ *                           Detail page Overview, one string per
+ *                           paragraph. Falls back to summary.
+ *   page          string    Detail page URL override. Omit to use the
+ *                           shared template, project.html?id=<id>.
  *   thumbnail     object    Card image { src, alt }. Defaults to the
  *                           first assets.images entry; with neither, the
  *                           card shows the forest-spiral artwork.
@@ -28,7 +32,8 @@
  *                           Chronological sort uses end, then start;
  *                           undated projects sort last.
  *   role          string    Your title on the project ("Scrum Master").
- *   contribution  string    What you personally did.
+ *   contribution  string | string[]
+ *                           What you personally did (My Contribution).
  *   technologies  string[]  Tools, languages, frameworks, services.
  *   methods       string[]  Practices and techniques. Displayed together
  *                           with technologies, stored separately.
@@ -38,7 +43,10 @@
  *     images      object[]  { src: string, alt: string, caption?: string }
  *     files       object[]  { label: string, href: string }
  *     links       object[]  { label: string, href: string }
- *   notes         string    Context such as advisors or venues.
+ *   notes         string    Context such as advisors or venues; shown
+ *                           at the end of the Overview.
+ *   reflection    string | string[]
+ *                           What you learned or would do differently.
  *
  * Rule against duplication: a file or link that IS a deliverable goes on
  * the deliverable's href only, not also in assets.
@@ -72,6 +80,7 @@ const PROJECTS = [
         methods: ["Project Management", "Agile Methodologies"],
         deliverables: [{ label: "Showcase poster" }],
         assets: {},
+        reflection: "",
         notes:
             "Faculty advisor: Ian Gorton. Presented at the Khoury Spring " +
             "MS CS Showcase, April 2026.",
@@ -97,6 +106,7 @@ const PROJECTS = [
         methods: ["Systematic Reviews", "AI Ethics"],
         deliverables: [],
         assets: {},
+        reflection: "",
         notes: "Presented at the Khoury Spring MS CS Showcase, April 2026.",
     },
     {
@@ -106,7 +116,6 @@ const PROJECTS = [
             "A real-time migraine aura simulator that applies adjustable " +
             "visual effects to a live webcam feed.",
         categories: ["Applications", "Computer Vision"],
-        page: "projects/aura_fx/index.html",
         start: "",
         end: "",
         role: "",
@@ -117,6 +126,7 @@ const PROJECTS = [
         assets: {
             images: [{ src: "images/aurafx-placeholder.png", alt: "AuraFx screenshot" }],
         },
+        reflection: "",
         notes: "",
     },
     {
@@ -134,6 +144,7 @@ const PROJECTS = [
         assets: {
             images: [{ src: "images/gamily-placeholder.png", alt: "Gamily screenshot" }],
         },
+        reflection: "",
         notes: "",
     },
 ];

@@ -5,8 +5,9 @@
  * Description: Styles for index.html. Defines the Forest Spiral color
  *              palette as CSS custom properties, the layered hero section
  *              (artwork, color wash, content), project filter tabs
- *              along the hero's bottom edge, and the responsive grid of
- *              clickable project preview cards.
+ *              along the hero's bottom edge, the responsive grid of
+ *              clickable project preview cards, and the project detail
+ *              page (project.html).
  */
 
 /* PALETTE: Forest Spiral */
@@ -323,4 +324,151 @@ body {
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+}
+
+/* =========================
+   Project Detail Page
+========================= */
+
+/* Shorter hero band: site name only, no filter tabs */
+.hero--compact {
+    min-height: auto;
+    padding: 1.5rem 1rem;
+}
+
+.site-name {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.site-name a {
+    color: var(--color-heading);
+    text-decoration: none;
+}
+
+.back-nav,
+.project-detail {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 1.5rem;
+}
+
+.back-nav {
+    padding-top: 1.5rem;
+}
+
+.back-link {
+    font-weight: bold;
+    color: var(--color-accent-hover);
+}
+
+.project-detail {
+    padding-bottom: 4rem;
+}
+
+.project-detail a {
+    color: var(--color-accent-hover);
+}
+
+.detail-header h1 {
+    margin: 1rem 0 0.75rem;
+    line-height: 1.25;
+    color: var(--color-heading);
+}
+
+/* Role and dates as label/value pairs near the top */
+.detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 0 0 1rem;
+}
+
+.detail-meta dt {
+    display: inline;
+    font-weight: bold;
+    color: var(--color-subheading);
+}
+
+.detail-meta dt::after {
+    content: ": ";
+}
+
+.detail-meta dd {
+    display: inline;
+    margin: 0;
+}
+
+/* Chips: categories and technologies/methods */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chips li {
+    padding: 0.2rem 0.7rem;
+    font-size: 0.85rem;
+    color: var(--color-heading);
+    background: var(--color-bg-soft);
+    border-radius: 999px;
+}
+
+.detail-image {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--color-shadow);
+}
+
+.detail-section {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.detail-section h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    color: var(--color-heading);
+}
+
+.detail-section h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1rem;
+    color: var(--color-subheading);
+}
+
+.detail-notes {
+    font-style: italic;
+}
+
+.detail-links {
+    padding-left: 1.25rem;
+}
+
+.detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detail-gallery figure {
+    margin: 0;
+}
+
+.detail-gallery img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.detail-gallery figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
 }
