@@ -7,6 +7,7 @@
  *              the project's detail page. "Chronological" shows every
  *              project newest first; each category button shows only
  *              projects whose categories include it.
+ * Depends:     projects.js, common.js (load both first).
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,36 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const list = document.getElementById("project-list");
     const emptyMessage = document.querySelector(".no-projects");
 
-    /* ---------- Helpers ---------- */
-
-    /** Creates an element with optional class and text content. */
-    function el(tag, className, text) {
-        const node = document.createElement(tag);
-        if (className) node.className = className;
-        if (text) node.textContent = text;
-        return node;
-    }
-
-    /** True for a non-empty string or non-empty array. */
-    function has(value) {
-        return Array.isArray(value) ? value.length > 0 : Boolean(value);
-    }
-
-    /** "2026-04" -> "Apr 2026"; "present" -> "Present". */
-    function formatMonth(value) {
-        if (value === "present") return "Present";
-        const [year, month] = value.split("-").map(Number);
-        return new Date(year, month - 1).toLocaleString("en-US", {
-            month: "short",
-            year: "numeric",
-        });
-    }
-
-    function dateRange(project) {
-        const { start, end } = project;
-        if (start && end) return `${formatMonth(start)} – ${formatMonth(end)}`;
-        return start || end ? formatMonth(start || end) : "";
-    }
+    // el, has, dateRange, detailPage, thumbnailOf come from common.js.
 
     /** Sort key: end date (ongoing first), else start; "" when undated. */
     function sortKey(project) {
@@ -64,17 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ---------- Card rendering ---------- */
 
     const TECH_PREVIEW_COUNT = 4; // items shown before "+N more"
-
-    /** Detail page URL: project.page, else projects/<id>.html. */
-    function detailPage(project) {
-        return project.page || `projects/${project.id}.html`;
-    }
-
-    /** Card image: project.thumbnail, else the first asset image. */
-    function thumbnailOf(project) {
-        const images = (project.assets && project.assets.images) || [];
-        return project.thumbnail || images[0] || null;
-    }
 
     /** Decorative placeholder tile (forest-spiral artwork, see CSS). */
     function placeholder() {
@@ -189,4 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     applyFilter("chronological");
+
+    // Returning from a detail page (index.html#<id>): the browser tries to
+    // jump before the cards exist, so scroll to the card once rendered.
+    const target = window.location.hash && document.getElementById(
+        decodeURIComponent(window.location.hash.slice(1)));
+    if (target) target.scrollIntoView({ block: "center" });
 });

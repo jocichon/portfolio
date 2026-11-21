@@ -3,11 +3,12 @@
   File:        index.html
   Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
   Author:      Jo Cichon
-  Description: Single-page portfolio. Hero section with a short bio,
+  Description: Portfolio home page. Hero section with name and titles,
                followed by filterable project cards rendered from
-               projects.js by script.js.
+               projects.js by script.js. Cards link to project.html.
   Styles:      style.css
-  Scripts:     projects.js (data), script.js (rendering, filters)
+  Scripts:     projects.js (data), common.js (shared helpers),
+               script.js (card rendering, filters)
 -->
 <html lang="en">
 <head>
@@ -16,6 +17,7 @@
     <title>Jo Cichon Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="projects.js" defer></script>
+    <script src="common.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>

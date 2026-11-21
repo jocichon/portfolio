@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+  File:        project.html
+  Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
+  Author:      Jo Cichon
+  Description: Reusable project detail page. One template serves every
+               project: project.html?id=<project id> loads that project
+               from projects.js and fills in Role, Overview, My
+               Contribution, Technologies & Methods, Deliverables,
+               Assets, and Reflection. Empty sections are omitted.
+  Styles:      style.css
+  Scripts:     projects.js (data), common.js (shared helpers),
+               project-page.js (detail rendering)
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project · Jo Cichon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="projects.js" defer></script>
+    <script src="common.js" defer></script>
+    <script src="project-page.js" defer></script>
+</head>
+<body>
+
+<header class="hero hero--compact">
+    <div class="hero-content">
+        <p class="site-name"><a href="index.html">Jo Cichon</a></p>
+    </div>
+</header>
+
+<nav class="back-nav" aria-label="Breadcrumb">
+    <a href="index.html" class="back-link">← All projects</a>
+</nav>
+
+<!-- Filled by project-page.js from the project matching ?id= -->
+<main id="project-detail" class="project-detail">
+    <noscript>
+        <p>Enable JavaScript to view this project.</p>
+    </noscript>
+</main>
+
+</body>
+</html>
