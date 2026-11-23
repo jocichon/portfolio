@@ -3,7 +3,8 @@
   File:        index.html
   Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
   Author:      Jo Cichon
-  Description: Portfolio home page. Hero section with name and titles,
+  Description: Portfolio home page. Site navigation (About, GitHub,
+               LinkedIn, Medium), hero section with name and titles,
                followed by filterable project cards rendered from
                projects.js by script.js. Cards link to project.html.
   Styles:      style.css
@@ -23,6 +24,15 @@
 <body>
 
 <header class="hero">
+    <!-- Site navigation: keep in sync across index.html, about.html, project.html -->
+    <nav class="site-nav" aria-label="Site">
+        <a href="index.html" aria-current="page">Projects</a>
+        <a href="about.html">About</a>
+        <a href="https://github.com/jocichon" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://www.linkedin.com/in/jo-cichon/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://medium.com/@jorichescichon" target="_blank" rel="noopener noreferrer">Medium<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </nav>
+
     <div class="hero-content">
         <h1>Jo Cichon</h1>
         <h2>Software Engineer • AI Ethics Researcher • Project Manager</h2>

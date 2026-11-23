@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  File:        about.html
+  Project:     Jo Cichon Portfolio (https://jocichon.github.io/portfolio/)
+  Author:      Jo Cichon
+  Description: About page: short professional bio, research and writing,
+               and links to GitHub, LinkedIn, and Medium. Static content;
+               no scripts. Shares the site navigation with index.html and
+               project.html.
+  Styles:      style.css
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About · Jo Cichon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero hero--compact">
+    <!-- Site navigation: keep in sync across index.html, about.html, project.html -->
+    <nav class="site-nav" aria-label="Site">
+        <a href="index.html">Projects</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="https://github.com/jocichon" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://www.linkedin.com/in/jo-cichon/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://medium.com/@jorichescichon" target="_blank" rel="noopener noreferrer">Medium<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </nav>
+
+    <div class="hero-content">
+        <p class="site-name"><a href="index.html">Jo Cichon</a></p>
+    </div>
+</header>
+
+<main class="about">
+
+    <h1>About</h1>
+    <p class="about-tagline">Software Engineer • AI Ethics Researcher • Project Manager</p>
+
+    <!-- DRAFT: edit to your own voice before publishing -->
+    <section aria-labelledby="about-me">
+        <h2 id="about-me">Who I am</h2>
+        <p>
+            I'm Jo Cichon, a software engineer and AI ethics researcher who
+            also leads teams as a project manager. I started in software
+            development at Green River College and went on to graduate study
+            in computer science at Northeastern University's Khoury College
+            of Computer Sciences.
+        </p>
+        <p>
+            I build applications that put people first, from a case
+            management tool for Indigenous student support to an AI
+            assistant for nurses, and I study how the people who build AI
+            systems shape the ethics those systems carry.
+        </p>
+    </section>
+
+    <section aria-labelledby="about-research">
+        <h2 id="about-research">Research</h2>
+        <p>
+            My current research, <a href="project.html?id=mirror-or-self-portrait">Mirror
+            or Self-Portrait</a>, is a systematic review of AI ethics literature
+            with Dr. Brianna Dym. It examines how papers construct ethical
+            meaning and proposes a framework for reading AI systems as
+            expressions of their creators' decisions.
+        </p>
+    </section>
+
+    <section aria-labelledby="about-writing">
+        <h2 id="about-writing">Writing</h2>
+        <p>
+            I write about technology and AI ethics on
+            <a href="https://medium.com/@jorichescichon" target="_blank" rel="noopener noreferrer">Medium<span class="visually-hidden"> (opens in a new tab)</span></a>.
+            My first article is up, with more on the way.
+        </p>
+    </section>
+
+    <section aria-labelledby="about-connect">
+        <h2 id="about-connect">Connect</h2>
+        <ul class="about-links">
+            <li><a href="https://github.com/jocichon" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>: code and project repositories</li>
+            <li><a href="https://www.linkedin.com/in/jo-cichon/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>: experience and messages</li>
+            <li><a href="https://medium.com/@jorichescichon" target="_blank" rel="noopener noreferrer">Medium<span class="visually-hidden"> (opens in a new tab)</span></a>: articles</li>
+        </ul>
+    </section>
+
+</main>
+
+</body>
+</html>
