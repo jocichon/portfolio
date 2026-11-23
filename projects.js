@@ -130,6 +130,83 @@ const PROJECTS = [
         notes: "",
     },
     {
+        id: "indigenous-scholar",
+        title: "Indigenous Scholar: Holistic Case Management for Indigenous Students",
+        summary:
+            "A PHP and MySQL case management app, built with the Indigenous " +
+            "Student Success Center, that helps guidance counselors track " +
+            "student well-being through check-ins across seven dimensions: " +
+            "physical, spiritual, mental, emotional, academic, social, and " +
+            "financial.",
+        overview: [
+            "Indigenous Scholar supports the needs of Indigenous students " +
+                "through individualized guidance, student engagement, and " +
+                "holistic well-being assessments. It gives guidance counselors " +
+                "one place to monitor student well-being, document individual " +
+                "circumstances, and coordinate ongoing support.",
+            "Its core feature is a student check-in based on the Seven Bodies " +
+                "of Well-Being, a framework developed by the client: physical, " +
+                "spiritual, mental, emotional, academic, social, and financial. " +
+                "Students rate their current \"temperature\" in each dimension " +
+                "on interactive sliding scales, which opens an individualized " +
+                "conversation with their counselor. Rather than judging students " +
+                "by academic performance alone, the app supports a fuller view " +
+                "of what shapes student success.",
+            "Features include student profiles, case management for " +
+                "documenting concerns and follow-ups, reporting on student and " +
+                "check-in data, and user authentication.",
+        ],
+        categories: ["Applications"],
+        start: "2024-02",
+        end: "2024-06",
+        role: "",
+        contribution: "",
+        technologies: [
+            "PHP",
+            "MySQL",
+            "PDO",
+            "Fat-Free Framework",
+            "Composer",
+            "HTML",
+            "CSS",
+            "JavaScript",
+        ],
+        methods: ["MVC Architecture", "CRUD", "UML Design", "Client Collaboration"],
+        deliverables: [
+            {
+                label: "Capstone presentation recording (19:18–30:50)",
+                href: "https://www.youtube.com/watch?v=YYl66j6zhwQ&t=1158s",
+            },
+        ],
+        thumbnail: {
+            src: "images/indigenous-scholar/seven-bodies.png",
+            alt: "The Seven Bodies of Well-Being: physical, spiritual, mental, " +
+                "emotional, academic, social, and financial, arranged around " +
+                "Indigenous Scholar",
+        },
+        assets: {
+            images: [
+                {
+                    src: "images/indigenous-scholar/models-uml.png",
+                    alt: "UML class diagram: a Student has many Cases and many " +
+                        "CheckIns; CheckIn stores a score for each of the seven " +
+                        "well-being dimensions",
+                    caption: "Data model: Student, Case, and CheckIn",
+                },
+                {
+                    src: "images/indigenous-scholar/user-uml.png",
+                    alt: "UML class diagram of the User class, with name, email, " +
+                        "role, password, and account status fields",
+                    caption: "User accounts and roles",
+                },
+            ],
+        },
+        reflection: "",
+        notes:
+            "Green River College capstone, built by a team of five for the " +
+            "Indigenous Student Success Center.",
+    },
+    {
         id: "gamily",
         title: "Gamily",
         summary: "Tournament management platform built with Spring Boot and MySQL.",
