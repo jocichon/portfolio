@@ -45,6 +45,13 @@
  *     images      object[]  { src: string, alt: string, caption?: string }
  *     files       object[]  { label: string, href: string }
  *     links       object[]  { label: string, href: string }
+ *   code          object    Code access notice on the detail page:
+ *     repo        string    Public repository URL ("View source").
+ *     demo        string    Live demo URL, if one is public.
+ *     restricted  boolean   true when the code can't be shared; shows
+ *                           that demos are available on request.
+ *     reason      string    Optional: why it's restricted (ownership).
+ *                           Omit code entirely to show no notice.
  *   notes         string    Context such as advisors or venues; shown
  *                           at the end of the Overview.
  *   reflection    string | string[]
@@ -218,6 +225,12 @@ const PROJECTS = [
                     caption: "Check-in: seven well-being fields and user stories",
                 },
             ],
+        },
+        code: {
+            restricted: true,
+            reason:
+                "It was built for the Indigenous Student Success Center, " +
+                "and its repository is private.",
         },
         reflection: "",
         notes:

@@ -4,9 +4,10 @@
  * Author:      Jo Cichon
  * Description: Renders project.html for the project named by the ?id=
  *              query parameter. Every project uses the same layout:
- *              header (title, role, dates, categories, image), then
- *              Overview, My Contribution, Technologies & Methods,
- *              Deliverables, Assets, and Reflection. Sections whose
+ *              header (title, role, dates, categories, image), a code
+ *              access notice (repo link, or restricted with demos on
+ *              request), then Overview, My Contribution, Technologies &
+ *              Methods, Deliverables, Assets, and Reflection. Sections whose
  *              fields are empty are left out. The back link returns to
  *              this project's card on the listing. Gallery images link
  *              to their full-size files.
@@ -91,6 +92,40 @@ document.addEventListener("DOMContentLoaded", () => {
         header.append(img);
     }
     main.append(header);
+
+    /* ---------- Code access notice ---------- */
+
+    const DEMO_CONTACT = "https://www.linkedin.com/in/jo-cichon/";
+
+    if (project.code) {
+        const { repo, demo, restricted, reason } = project.code;
+        const notice = el("aside", "code-access");
+        notice.setAttribute("aria-label", "Code access");
+
+        if (repo || demo) {
+            const p = el("p");
+            p.append(el("strong", null, "Code: "));
+            if (repo) p.append(link("View source on GitHub", repo));
+            if (repo && demo) p.append(document.createTextNode(" · "));
+            if (demo) p.append(link("Live demo", demo));
+            notice.append(p);
+        }
+
+        if (restricted) {
+            notice.classList.add("code-access--restricted");
+            const p = el("p");
+            p.append(el("strong", null, "Code restricted: "));
+            const why = reason ? ` ${reason.replace(/\.?$/, ".")}` : "";
+            p.append(document.createTextNode(
+                `The source isn't public due to ownership.${why} ` +
+                "A live demo is available on request: "));
+            p.append(link("contact me on LinkedIn", DEMO_CONTACT));
+            p.append(document.createTextNode("."));
+            notice.append(p);
+        }
+
+        main.append(notice);
+    }
 
     /* ---------- Sections (fixed order; empty ones omitted) ---------- */
 
