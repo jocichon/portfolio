@@ -8,6 +8,7 @@
                from projects.js and fills in Role, Overview, My
                Contribution, Technologies & Methods, Deliverables,
                Assets, and Reflection. Empty sections are omitted.
+               Shares the site navigation with index.html and about.html.
   Styles:      style.css
   Scripts:     projects.js (data), common.js (shared helpers),
                project-page.js (detail rendering)
@@ -25,6 +26,15 @@
 <body>
 
 <header class="hero hero--compact">
+    <!-- Site navigation: keep in sync across index.html, about.html, project.html -->
+    <nav class="site-nav" aria-label="Site">
+        <a href="index.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="https://github.com/jocichon" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://www.linkedin.com/in/jo-cichon/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://medium.com/@jorichescichon" target="_blank" rel="noopener noreferrer">Medium<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </nav>
+
     <div class="hero-content">
         <p class="site-name"><a href="index.html">Jo Cichon</a></p>
     </div>
