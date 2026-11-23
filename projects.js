@@ -25,6 +25,8 @@
  *   thumbnail     object    Card image { src, alt }. Defaults to the
  *                           first assets.images entry; with neither, the
  *                           card shows the forest-spiral artwork.
+ *   headerImage   object    Detail page header image { src, alt }.
+ *                           Defaults to the card thumbnail.
  *   categories    string[]  Filter categories. Filter buttons are built
  *                           from these, so spelling must be consistent.
  *   start         string    "YYYY-MM". Start date.
@@ -179,7 +181,11 @@ const PROJECTS = [
             },
         ],
         thumbnail: {
-            src: "images/indigenous-scholar/seven-bodies.png",
+            src: "images/indigenous-scholar/wheel-thumb.webp",
+            alt: "Indigenous Scholar app icon: a segmented color wheel",
+        },
+        headerImage: {
+            src: "images/indigenous-scholar/seven-bodies-muted.png",
             alt: "The Seven Bodies of Well-Being: physical, spiritual, mental, " +
                 "emotional, academic, social, and financial, arranged around " +
                 "Indigenous Scholar",
@@ -187,17 +193,29 @@ const PROJECTS = [
         assets: {
             images: [
                 {
-                    src: "images/indigenous-scholar/models-uml.png",
-                    alt: "UML class diagram: a Student has many Cases and many " +
-                        "CheckIns; CheckIn stores a score for each of the seven " +
-                        "well-being dimensions",
-                    caption: "Data model: Student, Case, and CheckIn",
+                    src: "images/indigenous-scholar/design-uml-overview.webp",
+                    alt: "Design-phase UML: Profile links a Student record to " +
+                        "many Cases and many CheckIns, with review notes on " +
+                        "open design questions",
+                    caption: "Data model with design review notes",
                 },
                 {
-                    src: "images/indigenous-scholar/user-uml.png",
-                    alt: "UML class diagram of the User class, with name, email, " +
-                        "role, password, and account status fields",
-                    caption: "User accounts and roles",
+                    src: "images/indigenous-scholar/design-profile.webp",
+                    alt: "Profile UML class beside case manager user stories " +
+                        "grouped by read, create, update, and delete",
+                    caption: "Profile: class and CRUD user stories",
+                },
+                {
+                    src: "images/indigenous-scholar/design-case.webp",
+                    alt: "Case UML class beside case manager user stories for " +
+                        "listing, sorting, creating, closing, and archiving cases",
+                    caption: "Case: class and CRUD user stories",
+                },
+                {
+                    src: "images/indigenous-scholar/design-check-in.webp",
+                    alt: "CheckIn UML class, with the emotional indicator expanded " +
+                        "into seven fields, beside check-in user stories",
+                    caption: "Check-in: seven well-being fields and user stories",
                 },
             ],
         },
