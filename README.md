@@ -34,6 +34,10 @@ https://jocichon.github.io/portfolio/
 
 For professional inquiries or research collaborations, connect with me on [LinkedIn](https://www.linkedin.com/in/jo-cichon/).
 
+## Acknowledgments
+
+This site was developed with assistance from [Claude Code](https://claude.com/claude-code).
+
 ## License
 
 © 2026. All rights reserved.
