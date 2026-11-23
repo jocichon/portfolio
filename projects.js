@@ -48,6 +48,8 @@
  *   code          object    Code access notice on the detail page:
  *     repo        string    Public repository URL ("View source").
  *     demo        string    Live demo URL, if one is public.
+ *     demoLabel   string    Optional link text for demo. Defaults to
+ *                           "Live demo".
  *     restricted  boolean   true when the code can't be shared; shows
  *                           that demos are available on request.
  *     reason      string    Optional: why it's restricted (ownership).
@@ -158,6 +160,8 @@ const PROJECTS = [
         assets: {},
         code: {
             repo: "https://github.com/jocichon/mirror-v-selfportrait",
+            demo: "https://jocichon.github.io/mirror-v-selfportrait/",
+            demoLabel: "Interactive companion page",
         },
         reflection: "",
         notes:
