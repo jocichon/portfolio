@@ -8,7 +8,8 @@
  *              Overview, My Contribution, Technologies & Methods,
  *              Deliverables, Assets, and Reflection. Sections whose
  *              fields are empty are left out. The back link returns to
- *              this project's card on the listing.
+ *              this project's card on the listing. Gallery images link
+ *              to their full-size files.
  * Depends:     projects.js, common.js (load both first).
  */
 
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     header.append(chipList(project.categories, "Categories"));
 
-    const image = thumbnailOf(project);
+    const image = project.headerImage || thumbnailOf(project);
     if (image) {
         const img = el("img", "detail-image");
         img.src = image.src;
@@ -131,11 +132,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const grid = el("div", "detail-gallery");
             gallery.forEach((item) => {
                 const figure = el("figure");
+                // Link to the full-size image so detailed diagrams are readable.
+                const full = el("a");
+                full.href = item.src;
+                full.target = "_blank";
+                full.rel = "noopener";
                 const img = el("img");
                 img.src = item.src;
                 img.alt = item.alt || "";
                 img.loading = "lazy";
-                figure.append(img);
+                full.append(img, el("span", "visually-hidden", " (full size, opens in a new tab)"));
+                figure.append(full);
                 if (item.caption) figure.append(el("figcaption", null, item.caption));
                 grid.append(figure);
             });

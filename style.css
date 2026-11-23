@@ -418,10 +418,12 @@ body {
     border-radius: 999px;
 }
 
+/* Header image: capped size, centered, never upscaled or cropped */
 .detail-image {
     display: block;
-    width: 100%;
-    margin-top: 1.5rem;
+    max-width: min(100%, 520px);
+    max-height: 380px;
+    margin: 1.5rem auto 0;
     border-radius: 12px;
     box-shadow: 0 8px 20px var(--color-shadow);
 }
@@ -454,7 +456,7 @@ body {
 
 .detail-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
     gap: 1rem;
     margin-bottom: 1rem;
 }
@@ -464,8 +466,15 @@ body {
 }
 
 .detail-gallery img {
+    display: block;
     width: 100%;
     border-radius: 8px;
+    transition: box-shadow 0.2s ease;
+}
+
+.detail-gallery a:hover img,
+.detail-gallery a:focus-visible img {
+    box-shadow: 0 6px 16px var(--color-shadow);
 }
 
 .detail-gallery figcaption {
