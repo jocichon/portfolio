@@ -106,17 +106,63 @@ const PROJECTS = [
             "existentialism, the framework treats AI systems as expressions of " +
             "their creators' decisions. Next phases: a labeled dataset and an " +
             "ML classifier to automate classification across the AI lifecycle.",
+        overview: [
+            "AI ethics literature is broad and fragmented, and papers often " +
+                "rest on philosophical assumptions they never state. This " +
+                "project asks how ethical meaning is constructed in AI " +
+                "discourse, not only what each paper considers ethical.",
+            "A systematic review of ACM Digital Library research articles " +
+                "produced an emergent two-axis framework. The first axis asks " +
+                "whether AI is treated as a mirror, reflecting human data, " +
+                "behavior, and institutions, or as a self-portrait, an artifact " +
+                "of deliberate design choices. The second asks whether ethics " +
+                "is framed as a checklist of rules and mitigation, or as " +
+                "situated: contextual and constructed in practice. The four " +
+                "quadrants are Mitigation Framing, Responsible Design, " +
+                "Sociotechnical Reflection, and Ethics as Construction.",
+            "Each accepted paper is read in full. Representative quotes are " +
+                "assigned to a quadrant with a 1–5 strength-of-fit score, and " +
+                "each paper receives a weight for every quadrant. The work runs " +
+                "in four phases: the framework emerges (Phase 1), is applied to " +
+                "AI-specific ethics literature (Phase 2, current), yields a " +
+                "labeled dataset (Phase 3), and supports an ML classifier and " +
+                "lifecycle mapping (Phase 4).",
+        ],
         categories: ["Research"],
-        start: "",
+        start: "2026-01",
         end: "present",
         role: "",
         contribution: "",
         technologies: [],
-        methods: ["Systematic Reviews", "AI Ethics"],
-        deliverables: [],
+        methods: ["Systematic Reviews", "Qualitative Coding", "AI Ethics"],
+        deliverables: [
+            {
+                label: "Research poster (PDF)",
+                href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/docs/Cichon_Jo_MirrorOrSelfPortrait.pdf",
+            },
+            {
+                label: "Companion page: framework, method, and coding walkthrough",
+                href: "https://jocichon.github.io/mirror-v-selfportrait/",
+            },
+        ],
+        thumbnail: {
+            src: "images/mirror-or-self-portrait/poster-thumb.webp",
+            alt: "Mirror or Self-Portrait research poster",
+        },
+        headerImage: {
+            src: "images/mirror-or-self-portrait/poster.webp",
+            alt: "Mirror or Self-Portrait research poster: motivation, the " +
+                "two-axis framework with its four quadrants, methodology, " +
+                "and project phases",
+        },
         assets: {},
+        code: {
+            repo: "https://github.com/jocichon/mirror-v-selfportrait",
+        },
         reflection: "",
-        notes: "Presented at the Khoury Spring MS CS Showcase, April 2026.",
+        notes:
+            "Faculty advisor: Dr. Brianna Dym. Presented at the Khoury Spring " +
+            "MS CS Showcase, April 2026.",
     },
     {
         id: "aurafx",
