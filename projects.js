@@ -169,6 +169,77 @@ const PROJECTS = [
             "MS CS Showcase, April 2026.",
     },
     {
+        id: "embodiment-roots-of-hci",
+        title: "Embodiment and the Roots of HCI: Parallel Developments in Philosophy and Computing",
+        summary:
+            "A study tracing how computing has retraced philosophy's path " +
+            "from abstraction to embodiment. Building on Paul Dourish's " +
+            "embodied interaction, it pairs Descartes, Husserl, Heidegger, " +
+            "Merleau-Ponty, and Wittgenstein with Turing, Hoare, Milner, " +
+            "Grudin, and Dourish, and proposes existentialism, with its focus " +
+            "on responsibility and ethical agency, as the next step for AI design.",
+        overview: [
+            "Paul Dourish's Where the Action Is (2001) frames embodied " +
+                "interaction as a foundation for HCI. This project uses that " +
+                "framing as a starting point to trace a parallel between the " +
+                "history of philosophy and the history of computing.",
+            "Early computing inherited Cartesian dualism: interaction was " +
+                "symbolic, procedural, and abstract. Husserl, Heidegger, " +
+                "Merleau-Ponty, and Wittgenstein had already challenged the " +
+                "split between mind and body. Decades later, HCI made a " +
+                "similar turn, moving through graphical interfaces to tangible " +
+                "and social computing, and toward context, situatedness, and " +
+                "lived experience.",
+            "The parallel is asymmetrical: philosophy critiqued abstraction " +
+                "long before technology did. In both fields, the pull between " +
+                "abstraction and embodiment works as a dialectic that drives " +
+                "change, not a problem to solve. The project closes by " +
+                "proposing existentialism as the next step. Its emphasis on " +
+                "responsibility, choice, and ethical agency bears directly on " +
+                "how AI systems are designed.",
+        ],
+        categories: ["Research"],
+        start: "",
+        end: "2025-10",
+        role: "",
+        contribution: "",
+        technologies: [],
+        methods: ["Conceptual Analysis", "Phenomenology", "Embodied Interaction", "History of Computing"],
+        deliverables: [
+            {
+                label: "Extended abstract (PDF)",
+                href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/Cichon_CWIC2025_Abstract.pdf",
+            },
+            {
+                label: "CWIC 2025 poster (PDF)",
+                href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/CWIC_Poster_JoCichon.pdf",
+            },
+            {
+                label: "Narrated presentation on Dourish's Where the Action Is, Chapter 1 (PPTX)",
+                href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/Embodiment_in_HCI_Presentation.pptx",
+            },
+        ],
+        thumbnail: {
+            src: "images/embodiment-roots-of-hci/poster-thumb.webp",
+            alt: "Embodiment and the Roots of HCI research poster",
+        },
+        headerImage: {
+            src: "images/embodiment-roots-of-hci/poster.webp",
+            alt: "Embodiment and the Roots of HCI research poster: " +
+                "philosophers paired with technologists, from Descartes and " +
+                "Turing to the existentialists and AI",
+        },
+        assets: {},
+        code: {
+            repo: "https://github.com/jocichon/mirror-v-selfportrait/tree/main/phenom-to-existential",
+        },
+        reflection: "",
+        notes:
+            "Presented at the ACM Celebration of Cascadia Women in Computing " +
+            "(CWIC 2025), October 2025. Guidance from Dr. Brianna Dym. A " +
+            "precursor to Mirror or Self-Portrait.",
+    },
+    {
         id: "aurafx",
         title: "AuraFx",
         summary:
