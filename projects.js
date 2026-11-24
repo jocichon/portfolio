@@ -47,6 +47,8 @@
  *     links       object[]  { label: string, href: string }
  *   code          object    Code access notice on the detail page:
  *     repo        string    Public repository URL ("View source").
+ *     repoLabel   string    Optional link text for repo. Defaults to
+ *                           "View source on GitHub".
  *     demo        string    Live demo URL, if one is public.
  *     demoLabel   string    Optional link text for demo. Defaults to
  *                           "Live demo".
@@ -199,7 +201,7 @@ const PROJECTS = [
                 "how AI systems are designed.",
         ],
         categories: ["Research"],
-        start: "",
+        start: "2025-05",
         end: "2025-10",
         role: "",
         contribution: "",
@@ -215,7 +217,11 @@ const PROJECTS = [
                 href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/CWIC_Poster_JoCichon.pdf",
             },
             {
-                label: "Narrated presentation on Dourish's Where the Action Is, Chapter 1 (PPTX)",
+                label: "Presentation video: Dourish's Where the Action Is, Chapter 1",
+                href: "https://youtu.be/bQkbAbc3ZDI",
+            },
+            {
+                label: "Presentation slides with narration (PPTX)",
                 href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/Embodiment_in_HCI_Presentation.pptx",
             },
         ],
@@ -232,6 +238,9 @@ const PROJECTS = [
         assets: {},
         code: {
             repo: "https://github.com/jocichon/mirror-v-selfportrait/tree/main/phenom-to-existential",
+            repoLabel: "Project files on GitHub",
+            demo: "https://youtu.be/bQkbAbc3ZDI",
+            demoLabel: "Watch the presentation",
         },
         reflection: "",
         notes:
