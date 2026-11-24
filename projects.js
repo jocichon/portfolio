@@ -215,7 +215,11 @@ const PROJECTS = [
                 href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/CWIC_Poster_JoCichon.pdf",
             },
             {
-                label: "Narrated presentation on Dourish's Where the Action Is, Chapter 1 (PPTX)",
+                label: "Presentation video: Dourish's Where the Action Is, Chapter 1",
+                href: "https://youtu.be/bQkbAbc3ZDI",
+            },
+            {
+                label: "Presentation slides with narration (PPTX)",
                 href: "https://github.com/jocichon/mirror-v-selfportrait/blob/main/phenom-to-existential/Embodiment_in_HCI_Presentation.pptx",
             },
         ],
@@ -232,6 +236,8 @@ const PROJECTS = [
         assets: {},
         code: {
             repo: "https://github.com/jocichon/mirror-v-selfportrait/tree/main/phenom-to-existential",
+            demo: "https://youtu.be/bQkbAbc3ZDI",
+            demoLabel: "Watch the presentation",
         },
         reflection: "",
         notes:
