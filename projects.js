@@ -47,6 +47,8 @@
  *     links       object[]  { label: string, href: string }
  *   code          object    Code access notice on the detail page:
  *     repo        string    Public repository URL ("View source").
+ *     repoLabel   string    Optional link text for repo. Defaults to
+ *                           "View source on GitHub".
  *     demo        string    Live demo URL, if one is public.
  *     demoLabel   string    Optional link text for demo. Defaults to
  *                           "Live demo".
@@ -199,7 +201,7 @@ const PROJECTS = [
                 "how AI systems are designed.",
         ],
         categories: ["Research"],
-        start: "",
+        start: "2025-05",
         end: "2025-10",
         role: "",
         contribution: "",
@@ -236,6 +238,7 @@ const PROJECTS = [
         assets: {},
         code: {
             repo: "https://github.com/jocichon/mirror-v-selfportrait/tree/main/phenom-to-existential",
+            repoLabel: "Project files on GitHub",
             demo: "https://youtu.be/bQkbAbc3ZDI",
             demoLabel: "Watch the presentation",
         },

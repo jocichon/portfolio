@@ -98,14 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const DEMO_CONTACT = "https://www.linkedin.com/in/jo-cichon/";
 
     if (project.code) {
-        const { repo, demo, demoLabel, restricted, reason } = project.code;
+        const { repo, repoLabel, demo, demoLabel, restricted, reason } = project.code;
         const notice = el("aside", "code-access");
         notice.setAttribute("aria-label", "Code access");
 
         if (repo || demo) {
             const p = el("p");
             p.append(el("strong", null, "Code: "));
-            if (repo) p.append(link("View source on GitHub", repo));
+            if (repo) p.append(link(repoLabel || "View source on GitHub", repo));
             if (repo && demo) p.append(document.createTextNode(" · "));
             if (demo) p.append(link(demoLabel || "Live demo", demo));
             notice.append(p);
